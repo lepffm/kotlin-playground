@@ -9,8 +9,12 @@ fun testService(nameFilterFn: (String) -> Boolean = {true}) = listOf("Hello","he
 fun testSFn2( nameFilterFn: (String) -> Boolean={true}, eachFn: (String) -> Unit={}) { 
     listOf("Hello","hello").filter(nameFilterFn).forEach{ it -> eachFn(it) ;  println(it)}  
 }
+fun testSFnSequence( nameFilterFn: (String) -> Boolean={true}, eachFn: (String) -> Unit={}) { 
+    listOf("Hello","hello").asSequence().filter(nameFilterFn).forEach{ it -> eachFn(it) ;  println(it)}  
+}
 
 fun main() {
+    
    testService(){  it=="hello"}
    testService( nameFilterFn= { it=="hellO"})
    testService(){ it=="hellO"}
@@ -19,5 +23,5 @@ fun main() {
    testSFn2(nameFilterFn={it=="hello"})
    testSFn2{println("pre2 $it")} // no filter, just forEach
    testSFn2()
-
+   testSFnSequence(nameFilterFn={it=="Hello"})
 }
