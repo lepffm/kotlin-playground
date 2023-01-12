@@ -1,0 +1,9 @@
+val slot = slot<String>()
+every{
+  yourClass.methodCall(any()){ // or yourClass.methodCall(capture(slot))
+} answers {
+  when(firstArgs<String>()){ // when(slot.captured){ 
+    "hello" -> "world"
+    else -> "hello"
+  }
+}
