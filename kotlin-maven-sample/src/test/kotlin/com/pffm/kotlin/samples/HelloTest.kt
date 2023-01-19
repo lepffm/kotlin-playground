@@ -6,6 +6,6 @@ import org.junit.jupiter.api.Test;
 class HelloTest {
     @Test
     fun `when main, then print`(){
-        main(emptyArray())
+        Hello().main(emptyArray())
     }
 }
