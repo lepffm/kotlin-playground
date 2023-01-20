@@ -8,8 +8,15 @@
             "type": "kotlin",
             "request": "launch",
             "name": "Kotlin Launch",
+            "projectRoot": "${workspaceFolder}",
+            "mainClass": "com.pffm.kotlin.samples.MainClassKt"
+        },
+        {
+            "type": "kotlin",
+            "request": "launch",
+            "name": "Kotlin Springboot Launch",
             "projectRoot": "${workspaceFolder}/kotlin-maven-sample",
-            "mainClass": "com.pffm.kotlin.samples.HelloKt"
+            "mainClass": "com.pffm.kotlin.samples.HelloSpringBootKt"
         }
     ]
 }
