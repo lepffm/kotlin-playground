@@ -12,15 +12,15 @@
     <groupId>com.pffm.kotlin.samples</groupId>
     <artifactId>kotlin-maven-sample</artifactId>
     <version>0.0.1</version>
-    <packaging>jar</packaging>
-
     <name>kotlin-maven-sample</name>
 
     <properties>
+      <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <kotlin.version>1.7.22</kotlin.version>
         <kotlin.code.style>official</kotlin.code.style>
-        <junit.version>5.9.2</junit.version>
+        <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
+        <junit-jupiter.version>5.9.2</junit-jupiter.version>
         <mockk.version>1.13.3</mockk.version>
         <h2.version>2.1.214</h2.version>
     </properties>
@@ -54,7 +54,7 @@
         <dependency>
         <groupId>org.junit.jupiter</groupId>
         <artifactId>junit-jupiter</artifactId>
-        <version>${junit.version}</version>
+        <version>${junit-jupiter.version}</version>
         <scope>test</scope>
     </dependency>
      <dependency>
@@ -79,20 +79,23 @@
 
         <plugins>
                     <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-      </plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${project.parent.version}</version>
+            </plugin>
             <plugin>
-        <groupId>org.jetbrains.kotlin</groupId>
-        <artifactId>kotlin-maven-plugin</artifactId>
-        <configuration>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-maven-plugin</artifactId>
+                <version>${kotlin.version}</version>
+                <configuration>
+                <jvmTarget>${java.version}</jvmTarget>
           <args>
             <arg>-Xjsr305=strict</arg>
           </args>
           <compilerPlugins>
             <plugin>spring</plugin>
           </compilerPlugins>
-        </configuration>
+                </configuration>
         <dependencies>
           <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
@@ -100,7 +103,7 @@
             <version>${kotlin.version}</version>
           </dependency>
         </dependencies>
-      </plugin>
+            </plugin>
         </plugins>
     </build>
 
